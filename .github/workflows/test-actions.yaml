@@ -1,0 +1,16 @@
+name: Test Actions
+
+on:
+  workflow_dispatch:
+  
+jobs:
+  test-actions:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Test to get changed files
+        id: changed-files
+        uses: tj-actions/changed-files@v45
+      - name: Print changed files
+        run: echo "${{ steps.changed-files.outputs.files }}"
